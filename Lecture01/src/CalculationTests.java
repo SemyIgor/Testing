@@ -1,7 +1,10 @@
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CalculationTests {
-    public static void main1() {
+    public static void tests() {
+
+        /* Ручная проверка. Проверка условия, при его несоблюдении вызываем непроверенное исключение AssertionError */
         if (8 != Calculation.calculate(2, 6, '+')) {
             throw new AssertionError("Ошибка при сложении");
         }
@@ -15,9 +18,9 @@ public class CalculationTests {
             throw new AssertionError("Ошибка при делении");
         }
         /*
-         * Случаи с неправильными аргументами
+         * Случаи с неправильными аргументами (+, -, *, /)
          * аргумент operator типа char, должен вызывать исключение, если
-         * он получает не базовые символы (+, -, *, /)
+         * он получает не базовые символы
          */
         try {
             Calculation.calculate(35, 7, '/');
@@ -27,7 +30,21 @@ public class CalculationTests {
             }
         }
 
+        /*
+        * Ручная проверка. Проверяем выведенные результаты вручную методом последовательного просматривания
+        */
+        int firstOperand = 5;
+        int secondOperand = 6;
+        System.out.printf("%d %c %d = %.2f\n", firstOperand, '+', secondOperand, Calculation.calculate(5, 6, '+'));
+        System.out.printf("%d %c %d = %.2f\n", firstOperand, '-', secondOperand, Calculation.calculate(5, 6, '-'));
+        System.out.printf("%d %c %d = %.2f\n", firstOperand, '*', secondOperand, Calculation.calculate(5, 6, '*'));
+        System.out.printf("%d %c %d = %.2f\n", firstOperand, '/', secondOperand, Calculation.calculate(5, 6, '/'));
+
         // Использование утверждений
+        assert 30 == Calculation.calculate(5, 6, '*');
+
+        // На лекции было сказано, что сначала вычисляем код, а затем сравниваем результат с предполагаемым
+        // Хотя, на мой взгляд, мы множим ненужные переменные
         float banner1;
         banner1 = Calculation.calculate(13, 8, '-');
         assert 5 == banner1;
@@ -52,5 +69,8 @@ public class CalculationTests {
         assertThat(Calculation.calculate(2, 2, '-')).isEqualTo(0);
         assertThat(Calculation.calculate(2, 7, '*')).isEqualTo(14);
         assertThat(Calculation.calculate(100, 50, '/')).isEqualTo(2);
+
+        assertThatThrownBy(() -> Calculation.calculate(8, 4, '_'))
+                .isInstanceOf(IllegalStateException.class);
     }
 }
