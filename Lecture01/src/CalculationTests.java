@@ -71,8 +71,11 @@ public class CalculationTests {
         assertThat(Calculation.calculate(2, 2, '-')).isEqualTo(0);
         assertThat(Calculation.calculate(2, 7, '*')).isEqualTo(14);
         assertThat(Calculation.calculate(100, 50, '/')).isEqualTo(2);
+        assertThat(Calculation.calculate(625, 4, '^')).isEqualTo(5);
 
-        assertThatThrownBy(() -> Calculation.calculate(8, 4, '_'))
-                .isInstanceOf(IllegalStateException.class);
+/*        assertThatThrownBy(() -> Calculation.calculate(8, 4, '-'))
+                .isInstanceOf(IllegalStateException.class);  */
+        assertThatThrownBy(() -> Calculation.calculate(8, 2, '/'))
+                .isInstanceOf(ArithmeticException.class);
     }
 }

@@ -20,6 +20,14 @@ public class Calculation {
                     throw new ArithmeticException("Ошибка - деление на 0");
                 }
                 // break;
+            case '^':
+                //                    result = (float) Math.pow(firstOperand, secondOperand);
+                if (!(firstOperand < 0)) {
+                    result = Math.round(Math.pow(firstOperand, (float) 1 / secondOperand));
+                } else {
+                    throw new AssertionError("Negative");
+                }
+                break;
             default:
                 throw new IllegalStateException("Ошибка! Неверно указан оператор " + "'" + operator + "'");
         }
