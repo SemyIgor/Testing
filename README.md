@@ -1,2 +1,2 @@
 # Testing
-Lessons on testing
+Soft testing lessons
