@@ -1,7 +1,7 @@
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CalculationTests {
-    public static void main() {
+    public static void main1() {
         if (8 != Calculation.calculate(2, 6, '+')) {
             throw new AssertionError("Ошибка при сложении");
         }

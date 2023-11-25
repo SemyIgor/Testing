@@ -2,7 +2,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class Calculation {
-    public static void main() {
+    public static void main2() {
         int firstOperand = 5;
         int secondOperand = 6;
         char plus = '+';
@@ -28,7 +28,7 @@ public class Calculation {
     }
 
     public static float calculate(int firstOperand, int secondOperand, char operator) {
-        float result = 0;
+        float result;
         switch (operator) {
             case '+':
                 result = firstOperand + secondOperand;
