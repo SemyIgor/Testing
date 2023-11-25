@@ -4,6 +4,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class CalculationTests {
     public static void tests() {
 
+//        Калькулятор из лекции №1
+
         /* Ручная проверка. Проверка условия, при его несоблюдении вызываем непроверенное исключение AssertionError */
         if (8 != Calculation.calculate(2, 6, '+')) {
             throw new AssertionError("Ошибка при сложении");
