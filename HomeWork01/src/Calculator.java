@@ -1,5 +1,4 @@
-public class Calculation {
-
+public class Calculator {
     public static float calculate(int firstOperand, int secondOperand, char operator) {
         float result;
         switch (operator) {
@@ -32,5 +31,12 @@ public class Calculation {
                 throw new IllegalStateException("Ошибка! Неверно указан оператор " + "'" + operator + "'");
         }
         return result;
+    }
+
+    public static double calculatingDiscount(double purchaseAmount, int discountAmount){
+        if(discountAmount < 0) throw new IllegalStateException("Negative discount");
+        else if (discountAmount > 100) throw new IllegalStateException("Too much discount");
+        else return purchaseAmount * (1.0 - discountAmount / 100.0);
+
     }
 }
